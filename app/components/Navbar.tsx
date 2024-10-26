@@ -14,7 +14,7 @@ export default async function Navbar() {
           {session && session?.user ? (
             <>
               <Link href="/startup/create">
-                <span> Create</span>
+                <button> Create</button>
               </Link>
               <form
                 action={async () => {
