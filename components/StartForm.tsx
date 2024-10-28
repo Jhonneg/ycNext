@@ -41,7 +41,7 @@ export default function StartForm() {
           description: "Your startup pitch has ben created successfully ",
         });
 
-        router.push(`/startup/${result.id}`);
+        router.push(`/startup/${result._id}`);
       }
       return result;
     } catch (error) {
