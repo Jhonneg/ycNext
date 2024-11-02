@@ -24,11 +24,12 @@ export default async function Page({
 }) {
   const id = (await params).id;
 
-  const post = await client.fetch(STARTUP_BY_ID_QUERY, { id });
-
-  const { select: editorPosts } = await client.fetch(PLAYLIST_BY_SLUG_QUERY, {
-    slug: "editor-picks",
-  });
+  const [post, { select: editorPosts }] = await Promise.all([
+    await client.fetch(STARTUP_BY_ID_QUERY, { id }),
+    await client.fetch(PLAYLIST_BY_SLUG_QUERY, {
+      slug: "editor-picks",
+    }),
+  ]);
 
   if (!post) return notFound();
 
